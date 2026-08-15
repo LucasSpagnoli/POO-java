@@ -61,6 +61,6 @@ public class Endereco {
     }
 
     public String toString() {
-        return rua + ", " + numero + " - " + bairro + ", " + cidade + "/" + estado + " - CEP: " + cep;
+        return this.rua + ", " + this.numero + " - " + this.bairro + ", " + this.cidade + ", " + this.estado + " - " + this.cep;
     }
 }

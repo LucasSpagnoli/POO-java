@@ -1,6 +1,5 @@
 package atividade2.ex2;
 
-
 import java.util.Scanner;
 
 public class Main {
@@ -10,16 +9,16 @@ public class Main {
         int opcao;
 
         do {
-            System.out.println("===== SISTEMA PET SHOP =====");
-            System.out.println("1 - Cadastrar veterinário");
-            System.out.println("2 - Mostrar veterinários");
-            System.out.println("3 - Cadastrar endereço do veterinário");
-            System.out.println("4 - Cadastrar animal");
-            System.out.println("5 - Mostrar animais");
-            System.out.println("6 - Cadastrar dono");
-            System.out.println("7 - Cadastrar endereço do dono");
-            System.out.println("0 - Sair");
-            System.out.print("Escolha uma opção: ");
+            System.out.println("sistema pet shop");
+            System.out.println("1 - cadastrar veterinario");
+            System.out.println("2 - mostrar veterinarios");
+            System.out.println("3 - cadastrar endereco do veterinario");
+            System.out.println("4 - cadastrar animal");
+            System.out.println("5 - mostrar animais");
+            System.out.println("6 - cadastrar dono");
+            System.out.println("7 - cadastrar endereco do dono");
+            System.out.println("0 - sair");
+            System.out.print("escolha uma opcao ");
             opcao = scanner.nextInt();
             scanner.nextLine();
             System.out.println();
@@ -47,10 +46,9 @@ public class Main {
                     sistema.cadastrarEnderecoDono();
                     break;
                 case 0:
-                    System.out.println("Saindo do sistema...");
                     break;
                 default:
-                    System.out.println("Opção inválida.\n");
+                    System.out.println("opcao invalida\n");
             }
         } while (opcao != 0);
 

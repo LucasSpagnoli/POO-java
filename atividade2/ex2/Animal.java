@@ -42,7 +42,6 @@ public class Animal {
     }
 
     public String toString() {
-        String donoStr = (this.dono != null) ? this.dono.getNome() : "não cadastrado";
-        return "Nome: " + nome + " | Espécie: " + especie + " | Descrição: " + descricao + " | Dono: " + donoStr;
+        return "Nome: " + this.nome + " | Espécie: " + this.especie + " | Descrição: " + this.descricao + " | Dono: " + this.dono;
     }
 }

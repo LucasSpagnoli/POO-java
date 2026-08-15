@@ -33,7 +33,6 @@ public class Dono {
     }
 
     public String toString() {
-        String enderecoStr = (this.endereco != null) ? this.endereco.toString() : "não cadastrado";
-        return "Nome: " + nome + " | CPF: " + cpf + " | Endereço: " + enderecoStr;
+        return "Nome: " + this.nome + " | CPF: " + this.cpf + " | Endereço: " + this.endereco;
     }
 }
