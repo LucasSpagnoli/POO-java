@@ -1,7 +1,6 @@
-package atividade1;
 import java.util.Scanner;
 
-public class Pratica1 {
+public class ex1 {
     public static void main() {
         int[] nums = new int[5];
         Scanner in = new Scanner(System.in);
