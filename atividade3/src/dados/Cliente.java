@@ -1,10 +1,23 @@
 package dados;
 
+import java.util.ArrayList;
+
 public class Cliente {
+    private int id;
     private int cpf;
     private String nomme;
     private String endereco;
     private int telefone;
+    private ArrayList<Reserva> idas;
+    private ArrayList<Reserva> voltas;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getCpf() {
         return cpf;
@@ -41,18 +54,29 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "cpf=" + cpf +
+                "id=" + id +
+                ", cpf=" + cpf +
                 ", nomme='" + nomme + '\'' +
                 ", endereco='" + endereco + '\'' +
                 ", telefone=" + telefone +
+                ", idas=" + idas +
+                ", voltas=" + voltas +
                 '}';
     }
 
     public void reservarIda(Reserva reserva) {
+        idas.add(reserva);
+    }
 
+    public ArrayList<Reserva> getVoltas() {
+        return voltas;
+    }
+
+    public ArrayList<Reserva> getIdas() {
+        return idas;
     }
 
     public void reservarVolta(Reserva ida, Reserva volta) {
-        
+        voltas.add(volta);
     }
 }
