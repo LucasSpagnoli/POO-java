@@ -8,8 +8,7 @@ public class Cliente {
     private String nomme;
     private String endereco;
     private int telefone;
-    private ArrayList<Reserva> idas;
-    private ArrayList<Reserva> voltas;
+    private ArrayList<Reserva> reservas;
 
     public int getId() {
         return id;
@@ -59,24 +58,27 @@ public class Cliente {
                 ", nomme='" + nomme + '\'' +
                 ", endereco='" + endereco + '\'' +
                 ", telefone=" + telefone +
-                ", idas=" + idas +
-                ", voltas=" + voltas +
+                ", reservas=" + reservas +
                 '}';
     }
 
+    public ArrayList<Reserva> getreservas() {
+        return reservas;
+    }
+
     public void reservarIda(Reserva reserva) {
-        idas.add(reserva);
-    }
-
-    public ArrayList<Reserva> getVoltas() {
-        return voltas;
-    }
-
-    public ArrayList<Reserva> getIdas() {
-        return idas;
+        boolean existe = false;
+        for (int i = 0; i < reservas.toArray().length; i++) {
+            if (reservas.get(i).equals(reserva)) {
+                existe = true;
+            }
+        }
+        if (!existe) {
+            reservas.add(reserva);
+        }
     }
 
     public void reservarVolta(Reserva ida, Reserva volta) {
-        voltas.add(volta);
+        reservas.add(volta);
     }
 }

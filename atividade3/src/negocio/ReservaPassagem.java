@@ -8,17 +8,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReservaPassagem {
-    public ArrayList<Cidade> cidades;
-    public ArrayList<Cliente> clientes;
-    public ArrayList<ArrayList<Reserva>> reservas;
+    public ArrayList<Cidade> listaDeCidades;
+    public ArrayList<Cliente> listaDeClientes;
     Scanner scanner = new Scanner(System.in);
 
     public void cadastrarCidade(Cidade cidade) {
-        cidades.add(cidade);
+        listaDeCidades.add(cidade);
     }
 
     public void cadastrarCliente(Cliente cliente) {
-        clientes.add(cliente);
+        listaDeClientes.add(cliente);
     }
 
     public void reservarIda(Cliente cliente, Reserva reserva) {
@@ -30,21 +29,19 @@ public class ReservaPassagem {
     }
 
     public ArrayList<Reserva> mostrarReservar(int cpfCliente) {
-        Cliente c;
-        c = clientes.stream()
-                .filter(cliente -> cliente.getCpf() == cpfCliente)
-                .findFirst()
-                .orElse(null);
-
-        return c != null ? reservas.get(c.getId()) : null;
+        Cliente cliente = listaDeClientes.stream().filter(c -> c.getCpf() == cpfCliente).findFirst().orElse(null);
+        if (cliente == null) {
+            System.out.println("Nenhum cliente com este CPF encontrado");
+        }
+        return cliente.getreservas();
     }
 
     public ArrayList<Cliente> mostrarClientes() {
-        return clientes;
+        return listaDeClientes;
     }
 
     public ArrayList<Cidade> mostrarCidades() {
-        return cidades;
+        return listaDeCidades;
     }
 
 }

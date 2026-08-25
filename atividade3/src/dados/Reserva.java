@@ -8,18 +8,24 @@ public class Reserva {
     private String classeVoo;
     private boolean idaEvolta;
     private int poltrona;
+    private Cidade destino;
+    private Cidade origem;
+    private Reserva volta;
 
-    @Override
-    public String toString() {
-        return "Reserva{" +
-                "numReserva=" + numReserva +
-                ", dataVoo='" + dataVoo + '\'' +
-                ", horaVoo='" + horaVoo + '\'' +
-                ", preco=" + preco +
-                ", classeVoo='" + classeVoo + '\'' +
-                ", idaEvolta=" + idaEvolta +
-                ", poltrona=" + poltrona +
-                '}';
+    public Cidade getDestino() {
+        return destino;
+    }
+
+    public void setDestino(Cidade destino) {
+        this.destino = destino;
+    }
+
+    public Cidade getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(Cidade origem) {
+        this.origem = origem;
     }
 
     public int getNumReserva() {
@@ -76,5 +82,20 @@ public class Reserva {
 
     public void setPoltrona(int poltrona) {
         this.poltrona = poltrona;
+    }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "numReserva=" + numReserva +
+                ", dataVoo='" + dataVoo + '\'' +
+                ", horaVoo='" + horaVoo + '\'' +
+                ", preco=" + preco +
+                ", classeVoo='" + classeVoo + '\'' +
+                ", idaEvolta=" + idaEvolta +
+                ", poltrona=" + poltrona +
+                ", destino=" + destino +
+                ", origem=" + origem +
+                '}';
     }
 }
