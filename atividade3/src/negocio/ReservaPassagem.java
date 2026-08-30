@@ -5,35 +5,51 @@ import dados.Cliente;
 import dados.Reserva;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ReservaPassagem {
-    public ArrayList<Cidade> listaDeCidades;
-    public ArrayList<Cliente> listaDeClientes;
-    Scanner scanner = new Scanner(System.in);
+    private ArrayList<Cidade> listaDeCidades = new ArrayList<>();
+    private ArrayList<Cliente> listaDeClientes = new ArrayList<>();
 
     public void cadastrarCidade(Cidade cidade) {
-        listaDeCidades.add(cidade);
+        if (cidade != null && !listaDeCidades.contains(cidade)) {
+            listaDeCidades.add(cidade);
+        }
     }
 
     public void cadastrarCliente(Cliente cliente) {
-        listaDeClientes.add(cliente);
+        if (cliente != null) {
+            boolean clienteExiste = false;
+            for (Cliente c : listaDeClientes) {
+                if (c.getCpf() == cliente.getCpf()) {
+                    clienteExiste = true;
+                    break;
+                }
+            }
+            if (!clienteExiste) {
+                listaDeClientes.add(cliente);
+            }
+        }
     }
 
     public void reservarIda(Cliente cliente, Reserva reserva) {
-        cliente.reservarIda(reserva);
+        if (cliente != null && reserva != null) {
+            cliente.reservarIda(reserva);
+        }
     }
 
     public void reservarVolta(Cliente cliente, Reserva ida, Reserva volta) {
-        cliente.reservarVolta(ida, volta);
+        if (cliente != null && ida != null && volta != null) {
+            cliente.reservarVolta(ida, volta);
+        }
     }
 
-    public ArrayList<Reserva> mostrarReservar(int cpfCliente) {
-        Cliente cliente = listaDeClientes.stream().filter(c -> c.getCpf() == cpfCliente).findFirst().orElse(null);
-        if (cliente == null) {
-            System.out.println("Nenhum cliente com este CPF encontrado");
+    public ArrayList<Reserva> mostrarReservas(int cpfCliente) {
+        for (Cliente cliente : listaDeClientes) {
+            if (cliente.getCpf() == cpfCliente) {
+                return cliente.getReservas();
+            }
         }
-        return cliente.getreservas();
+        return new ArrayList<>();
     }
 
     public ArrayList<Cliente> mostrarClientes() {
@@ -43,5 +59,4 @@ public class ReservaPassagem {
     public ArrayList<Cidade> mostrarCidades() {
         return listaDeCidades;
     }
-
 }
