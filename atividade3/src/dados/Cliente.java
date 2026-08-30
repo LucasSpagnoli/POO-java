@@ -3,20 +3,11 @@ package dados;
 import java.util.ArrayList;
 
 public class Cliente {
-    private int id;
     private int cpf;
-    private String nomme;
+    private String nome;
     private String endereco;
     private int telefone;
-    private ArrayList<Reserva> reservas;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private ArrayList<Reserva> reservas = new ArrayList<>();
 
     public int getCpf() {
         return cpf;
@@ -26,12 +17,12 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public String getNomme() {
-        return nomme;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomme(String nomme) {
-        this.nomme = nomme;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getEndereco() {
@@ -50,35 +41,34 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", cpf=" + cpf +
-                ", nomme='" + nomme + '\'' +
-                ", endereco='" + endereco + '\'' +
-                ", telefone=" + telefone +
-                ", reservas=" + reservas +
-                '}';
-    }
-
-    public ArrayList<Reserva> getreservas() {
+    public ArrayList<Reserva> getReservas() {
         return reservas;
     }
 
     public void reservarIda(Reserva reserva) {
-        boolean existe = false;
-        for (int i = 0; i < reservas.toArray().length; i++) {
-            if (reservas.get(i).equals(reserva)) {
-                existe = true;
-            }
-        }
-        if (!existe) {
+        if (!reservas.contains(reserva)) {
             reservas.add(reserva);
         }
     }
 
     public void reservarVolta(Reserva ida, Reserva volta) {
-        reservas.add(volta);
+        ida.setVolta(volta);
+        if (!reservas.contains(ida)) {
+            reservas.add(ida);
+        }
+        if (!reservas.contains(volta)) {
+            reservas.add(volta);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "cpf=" + cpf +
+                ", nome='" + nome + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", telefone=" + telefone +
+                ", reservas=" + reservas +
+                '}';
     }
 }

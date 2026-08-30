@@ -12,22 +12,6 @@ public class Reserva {
     private Cidade origem;
     private Reserva volta;
 
-    public Cidade getDestino() {
-        return destino;
-    }
-
-    public void setDestino(Cidade destino) {
-        this.destino = destino;
-    }
-
-    public Cidade getOrigem() {
-        return origem;
-    }
-
-    public void setOrigem(Cidade origem) {
-        this.origem = origem;
-    }
-
     public int getNumReserva() {
         return numReserva;
     }
@@ -84,6 +68,32 @@ public class Reserva {
         this.poltrona = poltrona;
     }
 
+    public Cidade getDestino() {
+        return destino;
+    }
+
+    public void setDestino(Cidade destino) {
+        this.destino = destino;
+    }
+
+    public Cidade getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(Cidade origem) {
+        this.origem = origem;
+    }
+
+    public Reserva getVolta() {
+        return volta;
+    }
+
+    public void setVolta(Reserva volta) {
+        if (volta != this) {
+            this.volta = volta;
+        }
+    }
+
     @Override
     public String toString() {
         return "Reserva{" +
@@ -96,6 +106,7 @@ public class Reserva {
                 ", poltrona=" + poltrona +
                 ", destino=" + destino +
                 ", origem=" + origem +
+                ", volta=" + (volta != null ? volta.getNumReserva() : "Nenhuma") +
                 '}';
     }
 }
