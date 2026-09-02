@@ -3,14 +3,14 @@ package dados;
 import java.util.Objects;
 
 public class Contato {
-    private int nome;
+    private String nome;
     private String telefone;
 
-    public int getNome() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(int nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
