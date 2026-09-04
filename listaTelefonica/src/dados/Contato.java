@@ -4,7 +4,12 @@ import java.util.Objects;
 
 public class Contato {
     private String nome;
-    private String telefone;
+    private int telefone;
+
+    public Contato(String nome, int telefone) {
+        this.nome = nome;
+        this.telefone = telefone;
+    }
 
     public String getNome() {
         return nome;
@@ -14,26 +19,20 @@ public class Contato {
         this.nome = nome;
     }
 
-    public String getTelefone() {
+    public int getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o instanceof Contato contato) {
-            Contato c = (Contato) o;
-            if (this.telefone == c.getTelefone() && this.nome == c.getNome()) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Contato)) return false;
+        Contato outro = (Contato) obj;
+        return telefone == outro.telefone && Objects.equals(nome, outro.nome);
     }
 
     @Override
@@ -43,9 +42,6 @@ public class Contato {
 
     @Override
     public String toString() {
-        return "Contato{" +
-                "nome=" + nome +
-                ", telefone='" + telefone + '\'' +
-                '}';
+        return nome + ": " + telefone;
     }
 }
