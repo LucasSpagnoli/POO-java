@@ -47,16 +47,17 @@ public class Principal {
         System.out.println(livro2);
 
         System.out.println();
-        System.out.println("livro1 é igual a livro2? " + livro1.equals(livro2));
-        System.out.println("livro1 é igual a livro3? " + livro1.equals(livro3));
+        System.out.println("livro1 é igual a livro2? " + livro1.equals(livro2)); // false (ISBNs diferentes)
+        System.out.println("livro1 é igual a livro3? " + livro1.equals(livro3)); // true (mesmo ISBN)
 
-        System.out.println("\nTESTANDO A CLASSE REGISTROVENDA");
+        System.out.println();
+        System.out.println("TESTANDO A CLASSE REGISTROVENDA");
 
-        Livro[] livrosVenda1 = { livro1, livro2 };
+        Livro[] livrosVenda1 = {livro1, livro2};
         RegistroVenda venda1 = new RegistroVenda(1, cliente1, funcionario1, livrosVenda1);
 
         RegistroVenda venda2 = new RegistroVenda(2, cliente2, funcionario2);
-        Livro[] livrosVenda2 = { livro3 };
+        Livro[] livrosVenda2 = {livro1, livro3, livro2};
         venda2.setLivros(livrosVenda2);
 
         System.out.println(venda1);
@@ -64,5 +65,23 @@ public class Principal {
 
         System.out.println(venda2);
         System.out.println("Valor total da venda 2: R$ " + venda2.calcularValorVenda());
+
+        venda2.setFuncionario(funcionario1);
+        System.out.println("Funcionário atualizado da venda 2: " + venda2.getFuncionario().getNome());
+
+        System.out.println();
+        System.out.println("TESTANDO O METODO POSSUILIVROSREPETIDOS()");
+
+        if (venda1.possuiLivrosRepetidos()) {
+            System.out.println("Venda 1: o cliente " + venda1.getCliente().getNome() + " possui direito ao desconto.");
+        } else {
+            System.out.println("Venda 1: o cliente " + venda1.getCliente().getNome() + " NAO possui direito ao desconto.");
+        }
+
+        if (venda2.possuiLivrosRepetidos()) {
+            System.out.println("Venda 2: o cliente " + venda2.getCliente().getNome() + " possui direito ao desconto.");
+        } else {
+            System.out.println("Venda 2: o cliente " + venda2.getCliente().getNome() + " NAO possui direito ao desconto.");
+        }
     }
 }

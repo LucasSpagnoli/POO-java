@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class RegistroVenda {
 
     private int codigoVenda;
@@ -15,10 +13,7 @@ public class RegistroVenda {
     }
 
     public RegistroVenda(int codigoVenda, Cliente cliente, Funcionario funcionario) {
-        this.codigoVenda = codigoVenda;
-        this.cliente = cliente;
-        this.funcionario = funcionario;
-        this.livros = new Livro[0];
+        this(codigoVenda, cliente, funcionario, new Livro[0]);
     }
 
     public int getCodigoVenda() {
@@ -61,13 +56,37 @@ public class RegistroVenda {
         return valorTotal;
     }
 
+    public boolean possuiLivrosRepetidos() {
+        for (int i = 0; i < livros.length; i++) {
+            for (int j = i + 1; j < livros.length; j++) {
+                if (livros[i].equals(livros[j])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
-        return "RegistroVenda{" +
-                "codigoVenda=" + codigoVenda +
-                ", cliente=" + cliente +
-                ", funcionario=" + funcionario +
-                ", livros=" + Arrays.toString(livros) +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("RegistroVenda{")
+                .append("codigoVenda=").append(codigoVenda)
+                .append(", cliente=").append(cliente.getNome())
+                .append(", funcionario=").append(funcionario.getNome())
+                .append(", livros=[");
+
+        for (int i = 0; i < livros.length; i++) {
+            sb.append(livros[i].getTitulo());
+            if (i < livros.length - 1) {
+                sb.append(", ");
+            }
+        }
+
+        sb.append("], valorTotal=").append(calcularValorVenda())
+                .append(", possuiLivrosRepetidos=").append(possuiLivrosRepetidos())
+                .append('}');
+
+        return sb.toString();
     }
 }
