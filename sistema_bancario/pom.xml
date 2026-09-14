@@ -5,8 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>spagnoli</groupId>
-    <artifactId>atividade5</artifactId>
+    <artifactId>sistema_bancario</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>exercicio5</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>26</maven.compiler.source>
