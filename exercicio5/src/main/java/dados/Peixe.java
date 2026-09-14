@@ -1,4 +1,7 @@
 package dados;
 
-public class Peixe {
+public class Peixe extends Animal{
+    private float temperaturaIdeal;
+
+
 }
