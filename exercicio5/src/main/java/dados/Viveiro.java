@@ -64,10 +64,12 @@ public class Viveiro {
     }
 
     private float espacoDisponivel() {
-
+        return this.calculaEspaco()-this.espacoOcupado();
     }
 
     public boolean adicionarAnimal(Animal animal) {
+        float espacoOcupadoPeloAnimal = animal.calculaEspacoOcupado();
 
+        return !(espacoOcupadoPeloAnimal * 0.7 < this.espacoDisponivel()); // sugestão do intellij
     }
 }
