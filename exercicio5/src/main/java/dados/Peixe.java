@@ -10,4 +10,9 @@ public class Peixe extends Animal {
     public void setTemperaturaIdeal(float temperaturaIdeal) {
         this.temperaturaIdeal = temperaturaIdeal;
     }
+
+    @Override
+    public float calculaEspacoOcupado(){
+        return this.getAltura() * this.getComprimento() * this.getLargura();
+    }
 }

@@ -3,10 +3,10 @@ package dados;
 import java.util.ArrayList;
 
 public class Viveiro {
-    private String nome;
-    private float comprimento;
-    private float largura;
-    protected ArrayList<Animal> animais;
+    protected String nome;
+    protected float comprimento;
+    protected float largura;
+    protected ArrayList<Animal> animais = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -64,12 +64,15 @@ public class Viveiro {
     }
 
     private float espacoDisponivel() {
-        return this.calculaEspaco()-this.espacoOcupado();
+        return this.calculaEspaco() - this.espacoOcupado();
     }
 
     public boolean adicionarAnimal(Animal animal) {
         float espacoOcupadoPeloAnimal = animal.calculaEspacoOcupado();
-
-        return !(espacoOcupadoPeloAnimal * 0.7 < this.espacoDisponivel()); // sugestão do intellij
+        if (espacoDisponivel() > espacoOcupadoPeloAnimal * 0.7) {
+            animais.add(animal);
+            return true;
+        }
+        return false;
     }
 }

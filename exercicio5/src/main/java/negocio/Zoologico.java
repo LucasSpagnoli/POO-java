@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zoologico {
-    private List<Viveiro> viveiros;
-    private List<Animal> animais;
+    private List<Viveiro> viveiros = new ArrayList<>();
+    private List<Animal> animais = new ArrayList<>();
 
     public void cadastrarViveiro(Viveiro viveiro) {
         this.viveiros.add(viveiro);
@@ -22,19 +22,22 @@ public class Zoologico {
 
     public boolean alocarAnimal(Animal animal, Viveiro viveiro) {
         if (animal instanceof Peixe) {
-            if (viveiro instanceof Aquario) {
-                if (Math.abs(((Peixe) animal).getTemperaturaIdeal() - ((Aquario) viveiro).getTemperatura())>3) {
-                    return viveiro.adicionarAnimal(animal);
-                }
+            if (!(viveiro instanceof Aquario)) {
+                return false; // peixe só entra em aquário
             }
-            return false;
-        } else if (viveiro instanceof Aquario) {
-            return false;
+            Peixe peixe = (Peixe) animal;
+            Aquario aquario = (Aquario) viveiro;
+            if (Math.abs(peixe.getTemperaturaIdeal() - aquario.getTemperatura()) > 3) {
+                return false; // temperatura incompatível
+            }
+            return viveiro.adicionarAnimal(animal);
         } else {
+            if (viveiro instanceof Aquario) {
+                return false; // só peixe entra em aquário
+            }
             return viveiro.adicionarAnimal(animal);
         }
     }
-
     public Aquario[] getAquarios() {
         List<Aquario> aquarios = new ArrayList<>();
         for (Viveiro viveiro : viveiros) {

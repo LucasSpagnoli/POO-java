@@ -79,6 +79,6 @@ public class Animal {
     }
 
     public float calculaEspacoOcupado() {
-        return this.largura * this.comprimento + this.altura;
+        return this.largura * this.comprimento;
     }
 }
